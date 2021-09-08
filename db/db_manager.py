@@ -57,4 +57,20 @@ class Database:
         folder = 'db'
         path = os.path.join(app_path, folder)
         return os.path.normpath(os.path.join(path, host)) + ".db"
+
+    def add_client(self, name: str) -> None:
+        """Adds a client to the database."""
+        try:
+            log.debug("Adding a client.")
+            with DBCursor(self.host) as cursor:
+                cursor.execute("INSERT INTO clients VALUES (?)", (name.lower().strip(), ))
+        except sqlite3.IntegrityError:
+            log.critical("The name was repeated.")
+            raise SuchClientExists("The name provided for this new client is already in the database.")
+        except Exception:
+            log.critical("An exception was raised.")
+            raise
+        else:
+            log.debug(f"Client {name.title()} added successfully.")
+
     

@@ -43,7 +43,7 @@ class Database:
             log.debug("File already created. Setting up the tables")
             with DBCursor(self.host) as cursor:
                 cursor.execute("CREATE TABLE IF NOT EXISTS clients(name TEXT UNIQUE)")
-                cursor.execute("CREATE TABLE IF NOT EXISTS operations(id INTEGER UNIQUE PRIMARY KEY, date REAL, amount REAL)")
+                cursor.execute("CREATE TABLE IF NOT EXISTS operations(id INTEGER, date REAL, amount REAL)")
                 cursor.execute("CREATE TABLE IF NOT EXISTS totals(id INTEGER UNIQUE PRIMARY KEY, total REAL)")
             log.debug("Database file tables should be ok.")
         except Exception:
@@ -79,11 +79,14 @@ class Database:
         try:
             log.debug("Adding a new operation.")
             amount = float(amount)
+            client_id = self.get_id(name)
             with DBCursor(self.host) as cursor:
-                cursor.execute("")
-
+                cursor.execute("INSERT INTO operations VALUES(?, ?, ?)", (client_id, time.time(), amount))
         except Exception:
             log.critical("An exception was raised.")
+            raise
+        else:
+            log.debug("The operation was successfully added.")
 
     def get_id(self, name: str) -> int:
         """Get's a client's id by it's name."""

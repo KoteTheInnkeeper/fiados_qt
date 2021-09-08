@@ -1,6 +1,7 @@
 import logging
 import os
 import time
+from typing import Tuple, List
 
 from db.db_cursor import *
 from utils.errors import *
@@ -105,3 +106,49 @@ class Database:
             log.debug(f"The following id was found for {name.title()}: {result[0]}.")
             return int(result[0])
     
+    def update_totals(self):
+        """Updates the totals in 'totals' table."""
+        try:
+            log.debug("Updating totals.")
+            totals = self.get_all_totals()
+            with DBCursor(self.host) as cursor:
+                cursor.execute("DELETE FROM totals")
+                for id, total in totals:
+                    cursor.execute("INSERT INTO totals VALUES(?, ?)", (id, total))
+        except Exception:
+            log.critical("An exception was raised.")
+            raise
+    
+    def get_all_totals(self) -> List[Tuple[int, float]]:
+        """Get's all totals"""
+        try:
+            log.debug("Getting all totals.")
+            totals = []
+            with DBCursor(self.host) as cursor:
+                for client in self.get_all_clients_id():
+                    this_clients_total = 0
+                    cursor.execute("SELECT amount FROM operations WHERE id=?", (client, ))
+                    results = cursor.fetchall()
+                    for operation in results:
+                        this_clients_total += operation[0]
+                    totals.append((client, this_clients_total))
+        except Exception:
+            log.critical("An exception was raised.")
+            raise
+        else:
+            log.debug("Totals successfully calculated.")
+            return totals
+
+    def get_all_clients_id(self) -> List[int]:
+        """Get's all client's id."""
+        try:
+            with DBCursor(self.host) as cursor:
+                cursor.execute("SELECT rowid FROM clients")
+                clients_id = [result[0] for result in cursor.fetchall()]
+                if not clients_id:
+                    raise ClientNotFound("There are no clients.")
+        except Exception:
+            log.critical("An exception was raised.")
+            raise
+        else:
+            return clients_id

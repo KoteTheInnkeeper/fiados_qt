@@ -93,6 +93,7 @@ class Database:
                 cursor.execute("SELECT rowid FROM clients WHERE name=?", (name.lower().strip(), ))
                 result = cursor.fetchone()
                 if not result:
+                    log.debug(f"We couldn't find any client in database named {name.title()}")
                     raise ClientNotFound("There's no client named like so in the database.")
         except Exception:
             log.critical("An exception was raised.")

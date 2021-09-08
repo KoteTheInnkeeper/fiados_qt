@@ -87,7 +87,8 @@ class Database:
             log.critical("An exception was raised.")
             raise
         else:
-            log.debug("The operation was successfully added.")
+            log.debug("The operation was successfully added. Updating totals.")
+            self.update_totals()
 
     def get_id(self, name: str) -> int:
         """Get's a client's id by it's name."""
@@ -152,3 +153,17 @@ class Database:
             raise
         else:
             return clients_id
+
+    def get_clients_names(self) -> List[str]:
+        """Get's all client's names."""
+        try:
+            with DBCursor(self.host) as cursor:
+                cursor.execute("SELECT name FROM clients")
+                names = [result[0].title() for result in cursor.fetchall()]
+                if not names:
+                    raise ClientsNotFound("There are no clients.")
+        except Exception:
+            log.critical("An exception was raised.")
+            raise
+        else:
+            return names

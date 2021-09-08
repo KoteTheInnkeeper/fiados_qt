@@ -64,7 +64,7 @@ class LeftMenuPushButton(QPushButton):
             padding-left: {self.text_padding}px;
             text-align: left;
             border: none;
-            font: 75 12pt 'Segoe UI';
+            font: 100 12pt 'Segoe UI';
         }}
 
         QPushButton:hover {{

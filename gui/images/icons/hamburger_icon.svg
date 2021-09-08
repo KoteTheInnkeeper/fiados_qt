@@ -1,50 +1,65 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<!-- Generator: Adobe Illustrator 23.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 
 <svg
-   width="18.040001"
-   height="18.040001"
-   viewBox="0 0 4.7730835 4.7730837"
    version="1.1"
-   id="svg5"
-   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   id="Icons"
+   x="0px"
+   y="0px"
+   viewBox="0 0 32 32"
+   style="enable-background:new 0 0 32 32;"
+   xml:space="preserve"
    sodipodi:docname="hamburger_icon.svg"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg">
-  <sodipodi:namedview
-     id="namedview7"
-     pagecolor="#505050"
-     bordercolor="#eeeeee"
-     borderopacity="1"
-     inkscape:pageshadow="0"
-     inkscape:pageopacity="0"
-     inkscape:pagecheckerboard="0"
-     inkscape:document-units="mm"
-     showgrid="false"
-     units="px"
-     inkscape:zoom="44.844787"
-     inkscape:cx="9.0200005"
-     inkscape:cy="9.0200005"
-     inkscape:window-width="1920"
-     inkscape:window-height="1017"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="layer1" />
-  <defs
-     id="defs2" />
-  <g
-     inkscape:label="Capa 1"
-     inkscape:groupmode="layer"
-     id="layer1">
-    <path
-       inkscape:export-ydpi="288.13419"
-       inkscape:export-xdpi="288.13419"
-       inkscape:export-filename="E:\ESTUDOS\TUTORIAIS\NEW\Qt Widgets Projects\PyOneDark\Layout\Exports\Preview_01.png"
-       id="rect4"
-       style="fill:#c3ccdf;fill-opacity:1;stroke-width:0.0149578"
-       d="M 0.00529174,1.2428778e-4 V 0.52929029 H 4.7677918 V 1.2428778e-4 Z m 0,2.12183401222 v 0.529167 H 4.7677918 v -0.529167 z m 0,2.121834 v 0.529167 H 4.7677918 v -0.529167 z" />
-  </g>
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+   id="defs15" /><sodipodi:namedview
+   id="namedview13"
+   pagecolor="#505050"
+   bordercolor="#eeeeee"
+   borderopacity="1"
+   inkscape:pageshadow="0"
+   inkscape:pageopacity="0"
+   inkscape:pagecheckerboard="0"
+   showgrid="false"
+   inkscape:zoom="13"
+   inkscape:cx="8.4230769"
+   inkscape:cy="17.192308"
+   inkscape:window-width="1920"
+   inkscape:window-height="1017"
+   inkscape:window-x="-8"
+   inkscape:window-y="-8"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Icons" />
+<style
+   type="text/css"
+   id="style2">
+	.st0{fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+</style>
+
+
+
+<g
+   id="g1733"
+   transform="matrix(1.2258961,0,0,1.2435036,-3.6143379,-3.8960576)"><line
+     class="st0"
+     x1="7.3338952"
+     y1="16"
+     x2="24.666105"
+     y2="16"
+     id="line6" /><line
+     class="st0"
+     x1="7.3338952"
+     y1="10.487741"
+     x2="24.666105"
+     y2="10.487741"
+     id="line8" /><line
+     class="st0"
+     x1="7.3338952"
+     y1="21.512259"
+     x2="24.666105"
+     y2="21.512259"
+     id="line10" /></g>
 </svg>

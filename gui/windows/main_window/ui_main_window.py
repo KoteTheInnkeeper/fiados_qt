@@ -32,7 +32,7 @@ class UIMainWindow(object):
 
         # Left menu frame
         self.left_menu = QFrame()
-        self.left_menu.setStyleSheet(f"background-color: {Color.LEFT_MENU};")
+        self.left_menu.setStyleSheet(f"background-color: {Color.LEFT_MENU}; font: 100 12pt 'Segoe UI';")
         self.left_menu.setMaximumWidth(Dimension.LEFT_MENU_WIDTH)
         self.left_menu.setMinimumWidth(Dimension.LEFT_MENU_WIDTH)
         
@@ -42,10 +42,10 @@ class UIMainWindow(object):
         self.left_menu_layout.setSpacing(0)
 
         # Toggle, sell, stock buttons
-        self.toggle_btn = LeftMenuPushButton("Hide menu", icon_path="hamburger_icon.svg")
-        self.sell_btn = LeftMenuPushButton("Sell", icon_path="sell_icon.svg", is_active=True, btn_active_border_right=Color.CONTENT_BACKGROUND)
-        self.stock_btn = LeftMenuPushButton("Stock", icon_path="box_icon.svg", btn_active_border_right=Color.STOCK_LEFT_MENU)
-        self.about_btn = LeftMenuPushButton("About", icon_path="about_icon.svg")
+        self.toggle_btn = LeftMenuPushButton("Esconder menú", icon_path="hamburger_icon.svg")
+        self.add_btn = LeftMenuPushButton("Cargar", icon_path="add_icon.svg", is_active=True, btn_active_border_right=Color.CONTENT_BACKGROUND)
+        self.totals_btn = LeftMenuPushButton("Saldos", icon_path="totals_icon.svg", btn_active_border_right=Color.STOCK_LEFT_MENU)
+        self.about_btn = LeftMenuPushButton("Información", icon_path="about_icon.svg", btn_active_border_right=Color.STOCK_LEFT_MENU)
 
         # A spacer for the left menu
         self.left_menu_spacer = QSpacerItem(20, 20, QSizePolicy.Minimum, QSizePolicy.Expanding)
@@ -60,8 +60,8 @@ class UIMainWindow(object):
 
         # Adding elements to the left_menu_layout
         self.left_menu_layout.addWidget(self.toggle_btn)
-        self.left_menu_layout.addWidget(self.sell_btn)
-        self.left_menu_layout.addWidget(self.stock_btn)
+        self.left_menu_layout.addWidget(self.add_btn)
+        self.left_menu_layout.addWidget(self.totals_btn)
         self.left_menu_layout.addItem(self.left_menu_spacer)
         self.left_menu_layout.addWidget(self.about_btn)
         self.left_menu_layout.addWidget(self.version_label)
@@ -88,9 +88,9 @@ class UIMainWindow(object):
         self.top_layout.setAlignment(Qt.AlignVCenter)
         
         # Labels for this top bar
-        self.top_label_left = QLabel("")
+        self.top_label_left = QLabel("Agregar operación")
         self.top_label_left.setStyleSheet("font: 75 16pt 'Segoe UI';")
-        self.top_label_right = QLabel("| Inventory Project")
+        self.top_label_right = QLabel("| Saldos y deudas")
         self.top_label_right.setStyleSheet("font: 9pt 'Segoe UI'; text-align: right;")
 
         # Spacer to put between them
@@ -107,7 +107,7 @@ class UIMainWindow(object):
         # Pages
         self.ui_pages = UIStackedPages()
         self.ui_pages.setupUi(self.pages)
-        self.pages.setCurrentWidget(self.ui_pages.sell_page)
+        self.pages.setCurrentWidget(self.ui_pages.add_op_page)
 
         # Bot bar frame
         self.bot_bar = QFrame()

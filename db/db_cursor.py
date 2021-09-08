@@ -19,7 +19,7 @@ class DBCursor:
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         if exc_tb or exc_val or exc_type:
-            log.debug("An exception was reased within this context manager. Closing connection.")
+            log.debug("An exception was raised within this context manager. Closing connection.")
             self.connection.close()
         else:
             log.debug("This context has concluded without exceptions raised. Commiting and closing.")

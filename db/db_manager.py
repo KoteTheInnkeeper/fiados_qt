@@ -1,5 +1,6 @@
 import logging
 import os
+import time
 
 from db.db_cursor import *
 from utils.errors import *
@@ -73,4 +74,30 @@ class Database:
         else:
             log.debug(f"Client {name.title()} added successfully.")
 
+    def add_operation(self, name: str, amount: float) -> None:
+        """Adds the operation."""
+        try:
+            log.debug("Adding a new operation.")
+            amount = float(amount)
+            with DBCursor(self.host) as cursor:
+                cursor.execute("")
+
+        except Exception:
+            log.critical("An exception was raised.")
+
+    def get_id(self, name: str) -> int:
+        """Get's a client's id by it's name."""
+        try:
+            log.debug(f"Getting {name.title()}'s id.")
+            with DBCursor(self.host) as cursor:
+                cursor.execute("SELECT rowid FROM clients WHERE name=?", (name.lower().strip(), ))
+                result = cursor.fetchone()
+                if not result:
+                    raise ClientNotFound("There's no client named like so in the database.")
+        except Exception:
+            log.critical("An exception was raised.")
+            raise
+        else:
+            log.debug(f"The following id was found for {name.title()}: {result[0]}.")
+            return int(result[0])
     

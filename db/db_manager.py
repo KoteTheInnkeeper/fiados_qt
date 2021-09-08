@@ -1,5 +1,6 @@
 import logging
 import os
+from sqlite3 import dbapi2
 import time
 from typing import Tuple, List
 
@@ -155,7 +156,7 @@ class Database:
             return clients_id
 
     def get_clients_names(self) -> List[str]:
-        """Get's all client's names."""
+        """Gets all client's names."""
         try:
             with DBCursor(self.host) as cursor:
                 cursor.execute("SELECT name FROM clients")
@@ -167,3 +168,20 @@ class Database:
             raise
         else:
             return names
+
+    def get_operations_by_name(self, name: str) -> List[float]:
+        """"Gets all operations for a given name."""
+        try:
+            log.debug(f"Getting operations for {name.title()}.")
+            client_id = self.get_id(name)
+            with DBCursor(self.host) as cursor:
+                cursor.execute("SELECT date, amount FROM operations WHERE id=? ORDER BY date DESC", (client_id, ))
+                operations = cursor.fetchall()
+            if not operations:
+                raise OperationsNotFound("There were no operations found for this client.")
+        except Exception:
+            log.critical("An exception was raised.")
+            raise
+        else:
+            log.debug("Operations for such name were found.")
+            return list(operations)

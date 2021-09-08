@@ -1,0 +1,9 @@
+# Venv
+/venv
+
+# Log files
+*.log
+
+# Database files
+*.db
+

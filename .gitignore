@@ -7,3 +7,8 @@
 # Database files
 *.db
 
+# Launch json
+launch.json
+
+# Vscode
+.vscode
